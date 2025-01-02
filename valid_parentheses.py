@@ -33,6 +33,3 @@ class TestIsValid(unittest.TestCase):
     def test_is_valid4(self):
         s = "([])"
         self.assertTrue(is_valid(s))
-
-
-

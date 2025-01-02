@@ -2,8 +2,7 @@ import unittest
 
 
 def contains_duplicate(nums):
-    uniques = set(nums)
-    return len(nums) != len(uniques)
+    return len(nums) != len(set(nums))
 
 
 class TestContainsDuplicate(unittest.TestCase):

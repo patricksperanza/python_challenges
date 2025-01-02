@@ -27,4 +27,3 @@ class TestCalcPoints(unittest.TestCase):
     def test_calc3(self):
         ops = ["1", "C"]
         self.assertEqual(0, calc_points(ops))
-

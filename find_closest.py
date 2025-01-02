@@ -19,4 +19,3 @@ class TestFindClosest(unittest.TestCase):
     def test_find_closest2(self):
         nums = [2, -1, 1]
         self.assertEqual(1, find_closest(nums))
-

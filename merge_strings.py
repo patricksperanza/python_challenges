@@ -3,12 +3,15 @@ import unittest
 
 def merge_strings(word1, word2):
     res = []
-    for c1, c2 in zip(word1, word2):
-        res.append(c1+c2)
-    if len(word1) > len(word2):
-        res.append(word1[len(word2):])
-    elif len(word2) > len(word1):
-        res.append(word2[len(word1):])
+    n = min(len(word1), len(word2))
+    i = 0
+    while i < n:
+        res.append(word1[i] + word2[i])
+        i += 1
+    if len(word1) > n:
+        res.append(word1[i:])
+    elif len(word2) > n:
+        res.append(word2[i:])
     return "".join(res)
 
 
@@ -22,5 +25,3 @@ class TestMerge(unittest.TestCase):
         word1 = "ab"
         word2 = "pqrs"
         self.assertEqual("apbqrs", merge_strings(word1, word2))
-
-

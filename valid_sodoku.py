@@ -10,7 +10,6 @@ def is_valid(board: list[list[str]]) -> bool:
                 return False
             elif item != ".":
                 s.add(item)
-
     for i in range(len(board)):
         s = set()
         for j in range(len(board[0])):

@@ -33,4 +33,3 @@ class TestFindMin(unittest.TestCase):
     def test_find_min5(self):
         nums = [10, 11, 12, 13, 14, 15, 9]
         self.assertEqual(9, find_min(nums))
-

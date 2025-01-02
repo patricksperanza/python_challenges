@@ -2,9 +2,9 @@ import unittest
 from collections import Counter
 
 
-def can_construct(ransomNote: str, magazine: str) -> bool:
+def can_construct(ransom_note: str, magazine: str) -> bool:
     mag = Counter(magazine)
-    for char in ransomNote:
+    for char in ransom_note:
         if mag[char]:
             mag[char] -= 1
         else:
@@ -27,17 +27,3 @@ class TestRansom(unittest.TestCase):
         r = "aa"
         m = "aab"
         self.assertTrue(can_construct(r, m))
-
-"""
-Example 1:
-
-Input: ransomNote = "a", magazine = "b"
-Output: false
-Example 2:
-
-Input: ransomNote = "aa", magazine = "ab"
-Output: false
-Example 3:
-
-Input: ransomNote = "aa", magazine = "aab"
-Output: true"""

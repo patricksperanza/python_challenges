@@ -28,6 +28,3 @@ class TestTwoSum(unittest.TestCase):
         target = 6
         result = two_sum(nums, target)
         self.assertTrue(result == [0, 1] or result == [1, 0])
-
-
-

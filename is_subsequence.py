@@ -1,18 +1,17 @@
 import unittest
 
 
-def is_subsequence(s: str, t: str) -> bool:
-    n1, n2 = len(s), len(t)
-    if n1 > n2: return False
-    if s == '': return True
+def is_subsequence(s, t):
+    if s == "":
+        return True
     i = 0
-    for j in range(n2):
-        if s[i] == t[j]:
+    n = len(s)
+    for j in range(len(t)):
+        if t[j] == s[i]:
             i += 1
-            if i == n1:
+            if i >= n:
                 return True
     return False
-
 
 
 class TestIsSubsequence(unittest.TestCase):
@@ -25,4 +24,3 @@ class TestIsSubsequence(unittest.TestCase):
         s = 'axc'
         t = 'ahbgdc'
         self.assertFalse(is_subsequence(s, t))
-
