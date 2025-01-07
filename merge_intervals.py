@@ -2,14 +2,14 @@ import unittest
 
 
 def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:
-    intervals.sort(key=lambda item: item[0])
-    res = []
+    intervals.sort(key=lambda i: i[0])
+    merged = []
     for interval in intervals:
-        if len(res) != 0 and res[-1][1] >= interval[0]:
-            res[-1] = [res[-1][0], max(res[-1][1], interval[1])]
+        if merged and merged[-1][1] >= interval[0]:
+            merged[-1][1] = max(merged[-1][1], interval[1])
         else:
-            res.append(interval)
-    return res
+            merged.append(interval)
+    return merged
 
 
 class TestMerge(unittest.TestCase):

@@ -3,12 +3,12 @@ import unittest
 
 def daily_temperatures(temps: list[int]) -> list[int]:
     n = len(temps)
-    stk = []
     ans = [0] * n
+    stk = []
     for i, t in enumerate(temps):
         while stk and stk[-1][0] < t:
-            st, si = stk.pop()
-            ans[si] = i - si
+            prev = stk.pop()
+            ans[prev[1]] = i - prev[1]
         stk.append((t, i))
     return ans
 

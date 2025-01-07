@@ -2,11 +2,11 @@ import unittest
 
 
 def max_subarray(nums):
-    current_sum = 0
+    current = 0
     max_sum = float('-inf')
     for num in nums:
-        current_sum = max(current_sum + num, num)
-        max_sum = max(max_sum, current_sum)
+        current = max(current + num, num)
+        max_sum = max(max_sum, current)
     return max_sum
 
 

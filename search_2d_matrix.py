@@ -2,19 +2,17 @@ import unittest
 
 
 def search_matrix(matrix: list[list[int]], target: int) -> bool:
-    height = len(matrix)
-    width = len(matrix[0])
+    num_rows = len(matrix)
+    num_cols = len(matrix[0])
     left = 0
-    right = height * width - 1
-
+    right = num_rows * num_cols - 1
     while left <= right:
         mid = (left + right) // 2
-        i = mid // width
-        j = mid % width
-        mid_num = matrix[i][j]
-        if mid_num == target:
+        cur_row = mid // num_cols
+        cur_col = mid % num_cols
+        if matrix[cur_row][cur_col] == target:
             return True
-        elif mid_num < target:
+        elif matrix[cur_row][cur_col] < target:
             left = mid + 1
         else:
             right = mid - 1

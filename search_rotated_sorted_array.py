@@ -1,36 +1,39 @@
 import unittest
 
 
-def search(nums: list[int], target: int) -> int:
-    n = len(nums)
+def find_min_index(nums: list[int]) -> int:
     left = 0
-    right = n - 1
+    right = len(nums) - 1
     while left < right:
-        m = (left + right) // 2
-        if nums[m] < nums[right]:
-            right = m
+        mid = (left + right) // 2
+        if nums[mid] < nums[right]:
+            right = mid
         else:
-            left = m + 1
-    min_index = left
-    if min_index == 0:
-        left = 0
-        right = n - 1
-    elif nums[0] <= target <= nums[min_index - 1]:
-        left = 0
-        right = min_index - 1
-    else:
-        left = min_index
-        right = n - 1
+            left = mid + 1
+    return left
 
+
+def binary_search(nums: list[int], target: int, left: int, right: int) -> int:
     while left <= right:
-        m = (left + right) // 2
-        if nums[m] == target:
-            return m
-        elif nums[m] < target:
-            left = m + 1
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
         else:
-            right = m - 1
-    return - 1
+            right = mid - 1
+    return -1
+
+
+def search(nums: list[int], target: int) -> int:
+    min_index = find_min_index(nums)
+    left = 0
+    right = len(nums) - 1
+    if target <= nums[right]:
+        left = min_index
+    else:
+        right = min_index - 1
+    return binary_search(nums, target, left, right)
 
 
 class TestSearchRotatedSortedArray(unittest.TestCase):
@@ -43,3 +46,13 @@ class TestSearchRotatedSortedArray(unittest.TestCase):
         nums = [4, 5, 6, 7, 0, 1, 2]
         target = 3
         self.assertEqual(-1, search(nums, target))
+
+    def test3(self):
+        nums = [1]
+        target = 0
+        self.assertEqual(-1, search(nums, target))
+
+    def test4(self):
+        nums = [3, 1]
+        target = 3
+        self.assertEqual(0, search(nums, target))

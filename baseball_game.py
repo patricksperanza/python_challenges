@@ -4,11 +4,11 @@ import unittest
 def calc_points(operations: list[str]) -> int:
     rec = []
     for op in operations:
-        if op == "+":
+        if op == '+':
             rec.append(rec[-1] + rec[-2])
-        elif op == "D":
+        elif op == 'D':
             rec.append(rec[-1] * 2)
-        elif op == "C":
+        elif op == 'C':
             rec.pop()
         else:
             rec.append(int(op))

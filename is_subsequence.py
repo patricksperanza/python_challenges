@@ -2,16 +2,12 @@ import unittest
 
 
 def is_subsequence(s, t):
-    if s == "":
-        return True
-    i = 0
-    n = len(s)
-    for j in range(len(t)):
-        if t[j] == s[i]:
-            i += 1
-            if i >= n:
-                return True
-    return False
+    sp = tp = 0
+    while sp < len(s) and tp < len(t):
+        if s[sp] == t[tp]:
+            sp += 1
+        tp += 1
+    return sp == len(s)
 
 
 class TestIsSubsequence(unittest.TestCase):

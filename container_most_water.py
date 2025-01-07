@@ -2,19 +2,20 @@ import unittest
 
 
 def max_area(height: list[int]) -> int:
+    n = len(height)
     left = 0
-    right = len(height) - 1
-    res = 0
+    right = n - 1
+    result = 0
     while left < right:
-        width = right - left
-        min_height = min(height[left], height[right])
-        area = width*min_height
-        res = max(res, area)
+        w = right - left
+        h = min(height[left], height[right])
+        area = w * h
+        result = max(result, area)
         if height[left] < height[right]:
             left += 1
         else:
             right -= 1
-    return res
+    return result
 
 
 class TestMostWater(unittest.TestCase):
